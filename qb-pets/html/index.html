@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Sound</title>
+</head>
+<body>
+    <audio id="catSound" src="../audio/cat_purr.mp3"></audio>
+    <audio id="dogSound" src="../audio/dog_excited.mp3"></audio>
+    <audio id="whistleSound" src="../audio/whistle.mp3"></audio>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.action == "playCatSound") {
+                var audio = document.getElementById('catSound');
+                console.log("Playing cat sound");
+                audio.currentTime = 0;
+                audio.muted = false;
+                audio.volume = 0.2;
+                
+                audio.play().then(() => {
+                    console.log("Cat sound is playing");
+                }).catch((error) => {
+                    console.error("Error playing cat sound:", error.message);
+                });
+            } else if (event.data.action == "playDogSound") {
+                var audio = document.getElementById('dogSound');
+                console.log("Playing dog sound");
+                audio.currentTime = 0;
+                audio.muted = false;
+                audio.volume = 0.1;
+                
+                audio.play().then(() => {
+                    console.log("Dog sound is playing");
+                }).catch((error) => {
+                    console.error("Error playing dog sound:", error.message);
+                });
+            } else if (event.data.action == "playWhistleSound") {
+                var audio = document.getElementById('whistleSound');
+                console.log("Playing whistle sound");
+                console.log("Whistle sound source:", audio.src);
+                audio.currentTime = 0;
+                audio.muted = false;
+                audio.volume = 0.1;
+                
+                audio.play().then(() => {
+                    console.log("Whistle sound is playing");
+                }).catch((error) => {
+                    console.error("Error playing whistle sound:", error.message);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
